@@ -1,0 +1,41 @@
+:host {
+    display: inline-block;
+}
+.wrapper {
+    height: 140px;
+    width: 140px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    .values {
+        color: white;
+        font-size: 12px;
+        line-height: 18px;
+    }
+    button.mat-mini-fab {
+        position: absolute;
+        background-color: transparent;
+        box-shadow: none;
+        color: white;
+        transform: scale(2);
+        &.top {
+            top: 0;
+            left: calc(50% - 20px);
+        }
+        &.left {
+            left: 0;
+            top: calc(50% - 20px);
+        }
+        &.right {
+            right: 0;
+            top: calc(50% - 20px);
+        }
+        &.bottom {
+            bottom: 0;
+            left: calc(50% - 20px);
+        }
+        
+    }
+}

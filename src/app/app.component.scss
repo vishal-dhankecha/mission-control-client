@@ -1,0 +1,136 @@
+:host {
+    display: block;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+    .connection-container {
+        height: 100%;
+        width: 100%;
+        .connecting {
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .connection-failed{
+            @extend.connecting;
+        }
+    }
+    .play-ground {
+        height: 100%;
+        width: 100%;
+        display: block;
+
+        .video-container{
+            position: absolute;
+            height: 100%;
+            z-index: -1;
+            top: 0;
+            left: 0;
+            // border: 1px solid;
+            width: 100%;    
+            text-align: center;
+        }
+        .status-bar {
+            height: 48px;
+            width: 100%;
+            // box-shadow: 3px -4px 8px 1px #222222;
+            display: flex;
+            align-items: center;
+            color: white;
+            // background-color: rgba(0, 0, 0, 0.3);
+            .item {
+                padding: 0 24px;
+                line-height: 48px;
+                display: inline-flex;
+                align-items: center;
+                .material-icons {
+                    font-size: 20px;
+                }
+            }
+            .mat-icon-button {
+                ::ng-deep {
+                    .mat-button-wrapper {
+                        line-height: 0;
+                    }
+                }
+            }
+            .first-item 
+            {
+                flex: 1;
+            }
+            .battery {
+                font-size: 17px;
+            }
+        }
+        .content {
+            width: 100%;
+            height: calc(100% - 48px);
+            .controls-container {
+                height: calc(100% - 36px);
+                display: flex;
+                position: relative;
+                .mat-stroked-button {
+                    border: 1px solid currentColor;
+                }
+                .mat-mini-fab {
+                    background-color: transparent;
+                    box-shadow: none;
+                    border: 1px solid currentColor;
+                    &.mat-accent {
+                        border: 1px solid #50ff00;
+                        color: #50ff00;
+                    }
+                }
+                .left-controls-wrapper{
+                    flex: 1;
+                    height: 100%;
+                    position: relative;
+                    button {
+                        margin: 8px;
+                    }
+                    app-joystick {
+                        position: absolute;
+                        bottom: 24px;
+                        left: 24px;
+                    }
+                }
+                .right-controls-wrapper{
+                    flex: 1;
+                    height: 100%;
+                    position: relative;    
+                    button {
+                        margin: 8px;
+                    }
+                    app-joystick {
+                        position: absolute;
+                        bottom: 24px;
+                        right: 24px;
+                    }
+                }
+            }
+            .bottom-info {
+                height: 36px;
+                display: flex;
+                align-items: center;                 
+                color: white;
+                .item {
+                    padding: 0 16px;
+                }
+            }
+        }
+        
+    }
+}
+
+#remoteVideo {
+    // -moz-transform:rotate(90deg);
+    // -webkit-transform:rotate(90deg);
+    // -o-transform:rotate(90deg);
+    // -ms-transform:rotate(90deg);
+    // transform:rotate(90deg);
+    // width: 960px;
+    // height: 100%;
+    // object-fit: fill;
+    // height: 100%;
+}

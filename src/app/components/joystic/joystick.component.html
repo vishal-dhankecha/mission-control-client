@@ -1,0 +1,62 @@
+<div class="wrapper">
+    <ng-container>
+        <button
+            mat-mini-fab
+            [disabled]="isTopKeyDisabled"
+            [id]="topId"
+            (keydown)="topKeyDown()"
+            (keyUp)="topKeyUp()"
+            (touchstart)="topKeyDown()"
+            (touchend)="topKeyUp()"
+            (touchcancel)="topKeyUp()"
+            class="top">
+            <span class="material-icons">
+            keyboard_arrow_up
+            </span>
+        </button>
+        <button
+            mat-mini-fab
+            [disabled]="isLeftKeyDisabled"
+            [id]="leftId"
+            (keydown)="leftKeyDown()"
+            (keyUp)="leftKeyUp()"
+            (touchstart)="leftKeyDown()"
+            (touchend)="leftKeyUp()"
+            (touchcancel)="leftKeyUp()"
+            class="left">
+            <span class="material-icons">
+            keyboard_arrow_left
+            </span>
+        </button>
+        <button
+            mat-mini-fab
+            [disabled]="isRightKeyDisabled"
+            [id]="rightId"
+            (keydown)="rightKeyDown()"
+            (keyUp)="rightKeyUp()"
+            (touchstart)="rightKeyDown()"
+            (touchend)="rightKeyUp()"
+            (touchcancel)="rightKeyUp()"
+            class="right">
+            <span class="material-icons">
+            keyboard_arrow_right
+            </span>
+        </button>
+        <button
+            mat-mini-fab
+            [disabled]="isBottomKeyDisabled"
+            [id]="bottomId"
+            (keydown)="bottomKeyDown()"
+            (keyUp)="bottomKeyUp()"
+            (touchstart)="bottomKeyDown()"
+            (touchend)="bottomKeyUp()"
+            (touchcancel)="bottomKeyUp()"
+            class="bottom">
+            <span class="material-icons">
+            keyboard_arrow_down
+            </span>
+        </button>
+    </ng-container>
+    <div class="values">{{x}}</div>
+    <div class="values">{{y}}</div>
+</div>

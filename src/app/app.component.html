@@ -1,0 +1,84 @@
+<!-- <ng-container *ngIf="!isConnected; else connected"> -->
+<ng-container *ngIf="false; else connected">
+  <div class="connection-container">
+    <div class="connecting" *ngIf="connecting; else connectionFailed">
+      Connecting...
+    </div>
+    <ng-template #connectionFailed>
+      <div class="connection-failed">
+        Connection Failed.
+        <button mat-stroked-button color="warn" (click)="getServerStatus()">Retry</button>
+      </div>
+    </ng-template>
+  </div>
+</ng-container>
+<ng-template #connected>
+  <div class="play-ground">
+    <div class="video-container" [hidden]="!isVideoConnected" [ngStyle]="{'top.px': getVideoPosition()}">
+      <video id="remoteVideo" autoplay></video>
+    </div>
+    <div class="status-bar">
+      <div class="item first-item">
+        <button mat-icon-button (click)="enableVideo()">
+          <i class="material-icons">
+            {{isVideoConnected ? 'visibility' : 'visibility_off'}}
+          </i>
+        </button>
+        <mat-checkbox class="mr-1" (change)="sendDCSignal()" [(ngModel)]="isDCSignal"></mat-checkbox>
+        {{time}}
+
+      </div>
+      <div class="item">
+        <i class="material-icons">
+          {{getBluetoothStatus()}}
+        </i>
+      </div>
+      <div class="item">
+        <i class="material-icons mr-1">
+          satellite
+        </i>
+        {{viewVariables.satellite}}
+      </div>
+      <div class="item battery">
+        <i class="material-icons">
+          {{getBatteryVoltage() == "" ? "battery_unknown" : "battery_std"}}
+        </i>
+        {{getBatteryVoltage()}}
+      </div>
+    </div>
+    <div class="content">
+      <div class="controls-container">
+        <div class="left-controls-wrapper">
+          <button mat-mini-fab (click)="arm()"
+            [color]="wsRequest.r1 >= 1500 ? 'accent' : ''">{{wsRequest.r1 >= 1500 ? 'A' : 'A'}}</button>
+          <button mat-mini-fab (click)="phold()" [color]="wsRequest.r2 >= 1500 ? 'accent' : ''">PH</button>
+          <app-joystick [throttleControl]="wsRequest.r2 != 1500" (change)="rightJoystickChange($event)"></app-joystick>
+        </div>
+        <div class="right-controls-wrapper">
+          <app-joystick (change)="leftJoystickChange($event)"></app-joystick>
+        </div>
+      </div>
+      <div class="bottom-info">
+        <span class="item">
+          speed <b>{{viewVariables.speed}}</b> km/h
+        </span>
+        <span class="item">
+          lat <b>{{wsResponse.arduinoResponseModel.lat}}</b>
+        </span>
+        <span class="item">
+          long <b>{{wsResponse.arduinoResponseModel.lon}}</b>
+        </span>
+        <span class="item">
+          H <b>{{viewVariables.height}}</b> m
+        </span>
+      </div>
+
+      <!--  <button mat-stroked-button (click)="setServerStatus()" color="primary">Primary</button>
+    <button mat-stroked-button color="accent">Accent</button>
+    <button mat-stroked-button color="warn">Warn</button>
+    <button mat-stroked-button disabled>Disabled</button>
+    <a mat-stroked-button routerLink=".">Link</a> -->
+    </div>
+
+  </div>
+</ng-template>
